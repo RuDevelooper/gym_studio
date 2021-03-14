@@ -1,0 +1,388 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+{#{% block title %}{% endblock %}#}
+
+{% block description %}{% endblock %}
+
+{% block keywords %}{% endblock %}
+
+{% block content %}
+    <!-- home page content-->
+    {% include 'mainapp/includes/inc__homepage_banner.html' %}
+
+
+    <section class="content-block about-main">
+        <div class="container">
+            <div class="home-about-text">
+                <h2>Top quality workout at a great price</h2>
+
+                <p class="top-text">Lorem ipsum dolor sit amet, cu nec fugit ignota forensibus, assum quidam vivendo ius
+                    ea.
+                    Eu eius interesset vix, enim invenire an vim, sea eu quis idque facilis. Eum ex iriure bonorum
+                    vituperata, sea eruditi patrioque ut, quaerendum sadipscing ex pri.
+                </p>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+
+                    <!-- Equipment & Facilities Link -->
+                    <a class="about-item blink-on-hover" href="facilities.html" data-aos="fade-up">
+                        <img src="{% static 'img/about-facilities.jpg' %}" alt="">
+                        <span>Оборудование и сервис</span>
+                    </a>
+
+                </div>
+                <div class="col-md-4">
+
+                    <!-- Personal Trainers Link -->
+                    <a class="about-item blink-on-hover" href="team.html" data-aos="fade-up" data-aos-delay="200">
+                        <img src="{% static 'img/about-team.jpg' %}" alt="">
+                        <span>Персональные тренировки</span>
+                    </a>
+
+                </div>
+                <div class="col-md-4">
+
+                    <!-- Membership Options Link -->
+                    <a class="about-item blink-on-hover" href="{% url 'membership' %}" data-aos="fade-up" data-aos-delay="400">
+                        <img src="{% static 'img/about-membership.jpg' %}" alt="">
+                        <span>Абонементы</span>
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container d-md-none">
+        <h2>Meet our happy customers</h2>
+    </div>
+
+    <section class="testimonials">
+        <div class="container">
+            <div id="testimonials" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+
+                    <!-- Review 1 -->
+                    <div class="carousel-item active">
+                        <div class="client-review">
+                            <div class="client-img">
+                                <img src="img/testimonials-face-01.jpg" alt="Ann Doe">
+                            </div>
+                            <div class="client-text">
+                                <p>
+                                    <i class="fa fa-quote-left" aria-hidden="true"></i>
+                                    GymCity is a fantastic and unique gym! The classes are so energetic, I feel totally
+                                    wiped out in a good way. You learn so much and everyone is really friendly!
+                                    <i class="fa fa-quote-right" aria-hidden="true"></i>
+                                </p>
+                                <div class="name">Anna Davis</div>
+                                <div class="status">Member since 2014</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review 2 -->
+                    <div class="carousel-item">
+                        <div class="client-review">
+                            <div class="client-img">
+                                <img src="img/testimonials-face-02.jpg" alt="Lucy Wilson">
+                            </div>
+                            <div class="client-text">
+                                <p>
+                                    <i class="fa fa-quote-left" aria-hidden="true"></i>
+                                    GymCity is the best gym I've ever been to! I absolutely love the gym area and
+                                    the classes! Everyone is so welcoming and I've met so many new friends!
+                                    <i class="fa fa-quote-right" aria-hidden="true"></i>
+                                </p>
+                                <div class="name">Lucy Wilson</div>
+                                <div class="status">Member since 2015</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review 3 -->
+                    <div class="carousel-item">
+                        <div class="client-review">
+                            <div class="client-img">
+                                <img src="img/testimonials-face-03.jpg" alt="John Smith">
+                            </div>
+                            <div class="client-text">
+                                <p>
+                                    <i class="fa fa-quote-left" aria-hidden="true"></i>
+                                    I'm really enjoying it! Thank you so much for bringing fitness back into my
+                                    life!<br>
+                                    That is fantastic! I love it!
+                                    <i class="fa fa-quote-right" aria-hidden="true"></i>
+                                </p>
+                                <div class="name">Samanta Miller</div>
+                                <div class="status">Member since 2013</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Left Arrow -->
+                <a class="carousel-control-prev d-none d-md-flex" href="#testimonials" role="button" data-slide="prev">
+                    <span class="fa fa-angle-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+
+                <!-- Right Arrow -->
+                <a class="carousel-control-next d-none d-md-flex" href="#testimonials" role="button" data-slide="next">
+                    <span class="fa fa-angle-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="content-block info-main">
+        <div class="container">
+            <h2>What makes our gyms great</h2>
+
+            <p class="top-text">In regione mediocrem neglegentur usu, no qui dicunt aliquam salutatus:</p>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <ul data-aos="fade-right">
+                        <li><strong>Low prices</strong> - lorem ipsum dolor sit amet, vix et aliquam conceptam
+                            theophrastus,
+                            ea sed
+                            viris postea volutpat
+                        </li>
+                        <li><strong>High quality equipment</strong> - id possim quodsi philosophia qui, ea soluta
+                            viderer
+                            qui, ignota
+                            aperiam definiebas per an
+                        </li>
+                        <li><strong>World class personal trainers</strong> - ex cibo diceret sententiae pri, mel an
+                            doctus
+                            percipit,
+                            ea veri petentium reprehendunt mea
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <ul data-aos="fade-left">
+                        <li><strong>No contract</strong> - in regione mediocrem neglegentur usu, no qui dicunt aliquam
+                            salutatus
+                        </li>
+                        <li><strong>Open 24/7</strong> - soleat commodo ius et, quo albucius elaboraret et, et labores
+                            commune
+                            repudiandae vim
+                        </li>
+                        <li><strong>Over 50 free classes a week</strong> - aeque omnes evertitur cu eam, et ignota
+                            placerat
+                            intellegam
+                            eos, ne vel erant aliquando, et mea menandri partiendo
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h2>Our FREE Classes you'll love</h2>
+        </div>
+
+        <div class="owl-carousel owl-theme classes-carousel">
+
+            <!-- Class 1 -->
+            <div class="class-item blink-on-hover">
+                <img src="img/classes-yoga.jpg" alt="Yoga">
+
+                <div class="class-details">
+                    <h6>Yoga</h6>
+
+                    <div class="class-details-icons">
+                        <a href="#"
+                           data-toggle="modal"
+                           data-target="#classDetails"
+                           data-title="Yoga"
+                           data-img="img/classes-yoga.jpg"
+                        >
+                            <i class="fa fa-info"
+                               data-toggle="tooltip"
+                               data-placement="bottom"
+                               title="Class Details"
+                            ></i>
+                        </a>
+                        <a href="schedule.html"
+                           data-toggle="tooltip"
+                           data-html="true"
+                           data-placement="bottom"
+                           title="Schedule"
+                        ><i class="fa fa-list"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Class 2 -->
+            <div class="class-item blink-on-hover">
+                <img src="img/classes-pilates.jpg" alt="Pilates">
+
+                <div class="class-details">
+                    <h6>Pilates</h6>
+
+                    <div class="class-details-icons">
+                        <a href="#"
+                           data-toggle="modal"
+                           data-target="#classDetails"
+                           data-title="Pilates"
+                           data-img="img/classes-pilates.jpg"
+                        >
+                            <i class="fa fa-info"
+                               data-toggle="tooltip"
+                               data-placement="bottom"
+                               title="Class Details"
+                            ></i>
+                        </a>
+                        <a href="schedule.html"
+                           data-toggle="tooltip"
+                           data-html="true"
+                           data-placement="bottom"
+                           title="Schedule"
+                        ><i class="fa fa-list"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Class 3 -->
+            <div class="class-item blink-on-hover">
+                <img src="img/classes-stretching.jpg" alt="Stretching">
+
+                <div class="class-details">
+                    <h6>Stretching</h6>
+
+                    <div class="class-details-icons">
+                        <a href="#"
+                           data-toggle="modal"
+                           data-target="#classDetails"
+                           data-title="Stretching"
+                           data-img="img/classes-stretching.jpg"
+                        >
+                            <i class="fa fa-info"
+                               data-toggle="tooltip"
+                               data-placement="bottom"
+                               title="Class Details"
+                            ></i>
+                        </a>
+                        <a href="schedule.html"
+                           data-toggle="tooltip"
+                           data-html="true"
+                           data-placement="bottom"
+                           title="Schedule"
+                        ><i class="fa fa-list"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Class 4 -->
+            <div class="class-item blink-on-hover">
+                <img src="img/classes-core.jpg" alt="Core Stability">
+
+                <div class="class-details">
+                    <h6>Core Stability</h6>
+
+                    <div class="class-details-icons">
+                        <a href="#"
+                           data-toggle="modal"
+                           data-target="#classDetails"
+                           data-title="Core Stability"
+                           data-img="img/classes-core.jpg"
+                        >
+                            <i class="fa fa-info"
+                               data-toggle="tooltip"
+                               data-placement="bottom"
+                               title="Class Details"
+                            ></i>
+                        </a>
+                        <a href="schedule.html"
+                           data-toggle="tooltip"
+                           data-html="true"
+                           data-placement="bottom"
+                           title="Schedule"
+                        ><i class="fa fa-list"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="content-block free-pass" data-scroll-index="0">
+        <div class="container">
+            <h2>Get a free 3 day pass</h2>
+
+            <!-- Contact Form -->
+            <form class="free-pass-form" novalidate>
+                <div class="row" data-aos="fade-up">
+
+                    <!-- First Name Input -->
+                    <div class="col-md-6 form-group">
+                        <input type="text" placeholder="First Name *" class="form-control" required/>
+
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please provide your first name
+                        </div>
+                    </div>
+
+                    <!-- Last Name Input -->
+                    <div class="col-md-6 form-group">
+                        <input type="text" placeholder="Last Name *" class="form-control" required/>
+
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please provide your last name
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row" data-aos="fade-up" data-aos-delay="200">
+                    <!-- Phone Input -->
+                    <div class="col-md-6 form-group">
+                        <input type="text" placeholder="Phone Number *" class="form-control" required/>
+
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please provide your phone number
+                        </div>
+                    </div>
+
+                    <!-- Email Input -->
+                    <div class="col-md-6 form-group">
+                        <input type="email" placeholder="Email *" class="form-control" required/>
+
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please provide your email address
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-full-width btn-primary btn-contact" data-aos="fade-up"
+                        data-aos-delay="400">Get a FREE 3 Day Pass
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Modals -->
+    {% include 'mainapp/includes/inc__modals.html' %}
+{% endblock %}

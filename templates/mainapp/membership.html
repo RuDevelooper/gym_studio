@@ -1,0 +1,87 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+{% block title %}Абонементы{% endblock %}
+{% block description %}Тут можно сравнить, выбрать и купить абонементы в GymStudio Омск. Разовые абонементы, месячные, полугодовые и даже годовые абонементы можно найти в этом разделе{% endblock %}
+{% block keywords %}купить абонемент, абонементы фитнес омск, разовый абонемент омск, абонемент на неделю омск, билет в тренажерный зал, абонемент в тренажерный зал, абонемент на групповые занятия, годовой абонемент, клубная карта фитнес омск, абонементы джим студио{% endblock %}
+{% block content %}
+    <section class="page-header membership-header bg-darken">
+        <h1 data-aos="zoom-in-up" data-aos-duration="500">Абонементы</h1>
+    </section>
+
+    <section class="content-block">
+        <div class="container">
+
+            {% for g, v in memberships.items %}
+                <h2>{{ g }}</h2>
+
+                <p class="top-text">{{ v.description }}</p>
+                <div class="options-list">
+                    <div class="row ">
+                        {% for m in v.memberships %}
+                            <!-- Membership options -->
+                            <div class="col-lg-{% widthratio 12 v.memberships|length 1 %} options-list-col">
+                                <div class="price-option">
+                                    <h3 class="price-option-name">{{ m.title }}</h3>
+
+                                    <div class="price-option-main">
+                                        <div class="price-value">
+                                            <span class="price-currency">₽</span>{{ m.price|floatformat:0 }}<span
+                                                class="pricing-desc">/{{ m.payment_period|lower }}</span>
+                                        </div>
+
+                                        <div class="price-option-features">
+                                            {% for option in m.options %}
+                                                <p><i class="fa fa-check" aria-hidden="true"></i>{{ option }}</p>
+                                            {% endfor %}
+                                        </div>
+
+                                        <a href="#" class="btn btn-full-width btn-default">Купить</a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+
+                    {% if v.options %}
+                        {% for o in v.options %}
+                            <p class="star-note mb-0">{{ o }}</p>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+
+            {% endfor %}
+
+
+
+            <h2>АКЦИИ И СКИДКИ</h2>
+
+            <p class="top-text">В нашем клубе действуют акции и скидки!</p>
+
+            <div class="options-list">
+                <div class="row ">
+
+                    <!-- Other membership options -->
+                    {% for p in promo %}
+                        <div class="col-lg-{% widthratio 12 promo|length 1 %} options-list-col">
+                            <div class="price-option">
+                                <h3 class="price-option-name">{{ p.title }}</h3>
+
+                                <div class="price-option-main">
+                                    <div class="price-value">
+                                        <span class="pricing-desc">до</span>{{ p.discount|floatformat:0 }}<span
+                                            class="price-currency">%</span>
+                                    </div>
+                                    <p class="description-text">{{ p.description }}</p>
+                                    <a href="#" class="btn btn-full-width btn-default btn-join">Купить</a>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                </div>
+                <p class="star-note mb-0">* Требуется предоставление подтверждающих документов.</p>
+            </div>
+        </div>
+    </section>
+{% endblock %}

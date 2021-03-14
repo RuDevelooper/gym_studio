@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>{% block title %}GYM🏋️‍STUDIO{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content='width=device-width, initial-scale=1, width=device-width'>
+    <meta name="description" content={% block description %}
+        "Спортзал с правильным подходом. Тут тебе помогут добиться целей. Если ты хочешь похудеть и привести себя в порядок, или набрать массу, то тебе сюда. Помощь при составлении плана тренировок и плана питания. Поддерка от опытных тренеров, персональные тренировки и консультации диетологов."
+    {% endblock %}>
+    <meta name="keywords" content={% block keywords %}
+        "тренировка, спортзал, фитнес, персональный тренер, долматов, джимстудио, gymstudio, gym studio, омск"
+    {% endblock %}>
+
+    {% include 'mainapp/includes/inc__fonts.html' %}
+
+    {% include 'mainapp/includes/inc__css.html' %}
+
+    {% include 'mainapp/includes/inc__favicon.html' %}
+</head>
+
+<body class="gym-city">
+
+<div class="loading-screen" id="loadingScreen">
+    <div class="loader">Загрузка...</div>
+</div>
+
+{% include 'mainapp/includes/inc__navbar.html' %}
+
+<!-- start of page content-->
+
+{% block content %}{% endblock %}
+
+<!-- end of page content-->
+
+{% include 'mainapp/includes/inc__footer.html' %}
+
+{#<!-- "Live Chat" icon in the bottom right-hand corner -->#}
+{#<div class="chat">#}
+{#    <a href="#"#}
+{#       class="chat-link"#}
+{#       data-toggle="tooltip"#}
+{#       data-html="true"#}
+{#       data-placement="left"#}
+{#       title="Live Chat.<br> Ask us anything!"#}
+{#    ></a>#}
+{#</div>#}
+
+
+{% include 'mainapp/includes/inc__js.html' %}
+{% block extrascript %}{% endblock %}
+
+
+</body>
+</html>
