@@ -5,8 +5,8 @@ class Trainer(models.Model):
         verbose_name = 'Тренер'
         verbose_name_plural = 'Тренеры'
 
-    name = models.CharField(max_length=100)
-    photo = models.ImageField(upload_to='trainer_photos/', default='static/img/team-01.jpg')
+    name = models.CharField(max_length=100, verbose_name='Фамилия Имя')
+    photo = models.ImageField(verbose_name='Изображение', upload_to='trainer_photos/', default='static/img/team-01.jpg')
     description = models.TextField(verbose_name='Описание тренера', null=True, blank=True)
 
     def __str__(self):
@@ -21,7 +21,7 @@ class WorkoutType(models.Model):
         verbose_name_plural = 'Виды занятий'
 
     title = models.CharField(verbose_name='Название', max_length=100)
-    photo = models.ImageField(verbose_name='Изображение', upload_to='media/')
+    photo = models.ImageField(verbose_name='Изображение', upload_to='workout_photos/')
     description = models.TextField(verbose_name='Описание')
     # equipment = models.TextField(verbose_name='Краткое описание')
 
@@ -40,7 +40,7 @@ class Workout(models.Model):
                                 blank=False)
     date = models.DateField(verbose_name='Дата')
     start_workout = models.TimeField(verbose_name='Начало тренировки')
-    workout_time = models.PositiveSmallIntegerField(verbose_name='Продолжительность тренировки (минут)')
+    workout_time = models.PositiveSmallIntegerField(verbose_name='Продолжительность (минут)')
 
     def __str__(self):
         return f'{self.type} {self.date} в {self.start_workout}'
