@@ -52,9 +52,3 @@ class Memberships(TemplateView):
 
         return context
 
-
-class Schedule(TemplateView):
-    template_name = 'mainapp/schedule.html'
-
-    def get_context_data(self, **kwargs):
-        return

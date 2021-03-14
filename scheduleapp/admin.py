@@ -25,12 +25,14 @@ class WorkoutAdmin(admin.ModelAdmin):
     list_display = (
         'type',
         'trainer',
+        'intensity',
         'date',
         'start_workout',
         'workout_time',
     )
     list_editable = (
         'trainer',
+        'intensity',
         'date',
         'start_workout',
         'workout_time',
@@ -38,7 +40,7 @@ class WorkoutAdmin(admin.ModelAdmin):
     list_filter = (
         'type',
         'trainer',
+        'intensity',
         'date',
-        'workout_time',
     )
     date_hierarchy = 'date'

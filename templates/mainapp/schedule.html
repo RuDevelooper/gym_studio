@@ -13,530 +13,72 @@
             <div class="timetable">
                 <!-- Schedule Top Navigation -->
                 <nav class="nav nav-tabs">
-                    <a class="nav-link active" data-toggle="tab" href="#shedule-Mon">ПН</a>
-                    <a class="nav-link" data-toggle="tab" href="#shedule-Tue">ВТ</a>
-                    <a class="nav-link" data-toggle="tab" href="#shedule-Wed">СР</a>
-                    <a class="nav-link" data-toggle="tab" href="#shedule-Thu">ЧТ</a>
-                    <a class="nav-link" data-toggle="tab" href="#shedule-Fri">ПТ</a>
-                    <a class="nav-link" data-toggle="tab" href="#shedule-Sat">СБ</a>
-                    <a class="nav-link" data-toggle="tab" href="#shedule-Sun">ВС</a>
+                    <a class="nav-link {% if today_weekday == 0 %}active{% endif %}" data-toggle="tab"
+                       href="#shedule-0">ПН</a>
+                    <a class="nav-link {% if today_weekday == 1 %}active{% endif %}" data-toggle="tab"
+                       href="#shedule-1">ВТ</a>
+                    <a class="nav-link {% if today_weekday == 2 %}active{% endif %}" data-toggle="tab"
+                       href="#shedule-2">СР</a>
+                    <a class="nav-link {% if today_weekday == 3 %}active{% endif %}" data-toggle="tab"
+                       href="#shedule-3">ЧТ</a>
+                    <a class="nav-link {% if today_weekday == 4 %}active{% endif %}" data-toggle="tab"
+                       href="#shedule-4">ПТ</a>
+                    <a class="nav-link {% if today_weekday == 5 %}active{% endif %}" data-toggle="tab"
+                       href="#shedule-5">СБ</a>
+                    <a class="nav-link {% if today_weekday == 6 %}active{% endif %}" data-toggle="tab"
+                       href="#shedule-6">ВС</a>
                 </nav>
 
                 <div class="tab-content">
-                    <div class="tab-pane fade show active" id="shedule-Mon">
-                        <div class="row">
 
-                            <!-- Schedule Item 1 -->
-                            <div class="col-md-6">
-                                <div class="timetable-item">
-                                    <div class="timetable-item-img">
-                                        <img src="img/schedule-core.jpg" alt="Core Stability">
-                                    </div>
-                                    <div class="timetable-item-main">
-                                        <div class="timetable-item-time">14:00 - 15:00</div>
-                                        <a href="#"
-                                           class="timetable-item-name"
-                                           data-toggle="modal"
-                                           data-target="#classDetails"
-                                           data-title="Core Stability"
-                                           data-img="img/classes-core.jpg"
-                                        >Авторская программа</a>
-                                        <span>
+                    {% for week_day, lessons in workouts.items %}
+                        <div class="tab-pane fade {% if today_weekday == week_day %}show active{% endif %}"
+                             id="shedule-{{ week_day }}">
+                            {% if not lessons %}<p align="center" class="pt-4">На этот день занятий не запланировано.</p>{% endif %}
+                            <div class="row">
+                                <!-- Schedule Items -->
+
+                                {% for lesson in lessons %}
+                                    <div class="col-md-6">
+                                        <div class="timetable-item">
+                                            <div class="timetable-item-img">
+                                                <img src="img/schedule-core.jpg" alt="Core Stability">
+                                            </div>
+                                            <div class="timetable-item-main">
+                                                <div class="timetable-item-time">14:00 - 15:00</div>
+                                                <a href="#"
+                                                   class="timetable-item-name"
+                                                   data-toggle="modal"
+                                                   data-target="#classDetails"
+                                                   data-title="Core Stability"
+                                                   data-img="img/classes-core.jpg"
+                                                >{{ lesson.type }}</a>
+                                                <span>
                                             <a href="#"
-                                           class="timetable-item-name text-right"
-                                           data-toggle="modal"
-                                           data-target="#classDetails"
-                                           data-title="Core Stability"
-                                           data-img="img/classes-core.jpg"
-                                        ><b>Долматова Татьяна</b></a>
+                                               class="timetable-item-name text-right"
+                                               data-toggle="modal"
+                                               data-target="#classDetails"
+                                               data-title="Core Stability"
+                                               data-img="img/classes-core.jpg"
+                                            ><b>{{ lesson.trainer }}</b></a>
                                         </span>
-                                        <a href="#" class="btn btn-full-width btn-default btn-book">Book</a>
+                                                <a href="#" class="btn btn-full-width btn-default btn-book">Хочу!</a>
 
-                                        <div class="timetable-item-intensity">
-                                            <i class="fa fa-circle"></i>
-                                            <i class="fa fa-circle"></i>
-                                            <i class="fa fa-circle-thin"></i>
+                                                <div class="timetable-item-intensity">
+                                                    <i class="fa fa-circle"></i>
+                                                    <i class="fa {% if lesson.intensity == 1 %}fa-circle-thin{% else %}fa-circle{% endif %}"></i>
+                                                    <i class="fa {% if lesson.intensity == 3 %}fa-circle{% else %}fa-circle-thin{% endif %}"></i>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                {% endfor %}
                             </div>
-
-                            <!-- Schedule Item 2 -->
-                            <div class="col-md-6">
-                                <div class="timetable-item">
-                                    <div class="timetable-item-img">
-                                        <img src="img/schedule-stretching.jpg" alt="Stretching">
-                                    </div>
-                                    <div class="timetable-item-main">
-                                        <div class="timetable-item-time">5:00pm - 6:00pm</div>
-                                        <a href="#"
-                                           class="timetable-item-name"
-                                           data-toggle="modal"
-                                           data-target="#classDetails"
-                                           data-title="Stretching"
-                                           data-img="img/classes-stretching.jpg"
-                                        >Stretching</a>
-                                        <a href="#" class="btn btn-full-width btn-default btn-book">Book</a>
-
-                                        <div class="timetable-item-like">
-                                            <i class="fa fa-heart-o" aria-hidden="true"></i>
-                                            <i class="fa fa-heart" aria-hidden="true"></i>
-
-                                            <div class="timetable-item-like-count">28</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Schedule Item 3 -->
-                            <div class="col-md-6">
-                                <div class="timetable-item">
-                                    <div class="timetable-item-img">
-                                        <img src="img/schedule-zumba.jpg" alt="Zumba">
-                                    </div>
-                                    <div class="timetable-item-main">
-                                        <div class="timetable-item-time">5:00pm - 6:00pm</div>
-                                        <a href="#"
-                                           class="timetable-item-name"
-                                           data-toggle="modal"
-                                           data-target="#classDetails"
-                                           data-title="Zumba"
-                                           data-img="img/schedule-zumba.jpg"
-                                        >Zumba</a>
-                                        <a href="#" class="btn btn-full-width btn-default btn-book">Book</a>
-
-                                        <div class="timetable-item-like">
-                                            <i class="fa fa-heart-o" aria-hidden="true"></i>
-                                            <i class="fa fa-heart" aria-hidden="true"></i>
-
-                                            <div class="timetable-item-like-count">28</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Schedule Item 4 -->
-                            <div class="col-md-6">
-                                <div class="timetable-item">
-                                    <div class="timetable-item-img">
-                                        <img src="img/schedule-yoga.jpg" alt="Yoga">
-                                    </div>
-                                    <div class="timetable-item-main">
-                                        <div class="timetable-item-time">7:00pm - 8:00pm</div>
-                                        <a href="#"
-                                           class="timetable-item-name"
-                                           data-toggle="modal"
-                                           data-target="#classDetails"
-                                           data-title="Yoga"
-                                           data-img="img/classes-yoga.jpg"
-                                        >Yoga</a>
-                                        <a href="#" class="btn btn-full-width btn-default btn-book">Book</a>
-
-                                        <div class="timetable-item-like">
-                                            <i class="fa fa-heart-o" aria-hidden="true"></i>
-                                            <i class="fa fa-heart" aria-hidden="true"></i>
-
-                                            <div class="timetable-item-like-count">23</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Schedule Item 5 -->
-                            <div class="col-md-6">
-                                <div class="timetable-item">
-                                    <div class="timetable-item-img">
-                                        <img src="img/schedule-stretching.jpg" alt="Stretching">
-                                    </div>
-                                    <div class="timetable-item-main">
-                                        <div class="timetable-item-time">6:00pm - 7:00pm</div>
-                                        <a href="#"
-                                           class="timetable-item-name"
-                                           data-toggle="modal"
-                                           data-target="#classDetails"
-                                           data-title="Stretching"
-                                           data-img="img/classes-stretching.jpg"
-                                        >Stretching</a>
-                                        <a href="#" class="btn btn-full-width btn-default btn-book">Book</a>
-
-                                        <div class="timetable-item-like">
-                                            <i class="fa fa-heart-o" aria-hidden="true"></i>
-                                            <i class="fa fa-heart" aria-hidden="true"></i>
-
-                                            <div class="timetable-item-like-count">14</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Schedule Item 6 -->
-                            <div class="col-md-6">
-                                <div class="timetable-item">
-                                    <div class="timetable-item-img">
-                                        <img src="img/schedule-zumba.jpg" alt="Zumba">
-                                    </div>
-                                    <div class="timetable-item-main">
-                                        <div class="timetable-item-time">8:00pm - 9:00pm</div>
-                                        <a href="#"
-                                           class="timetable-item-name"
-                                           data-toggle="modal"
-                                           data-target="#classDetails"
-                                           data-title="Zumba"
-                                           data-img="img/schedule-zumba.jpg"
-                                        >Zumba</a>
-                                        <a href="#" class="btn btn-full-width btn-default btn-book">Book</a>
-
-                                        <div class="timetable-item-like">
-                                            <i class="fa fa-heart-o" aria-hidden="true"></i>
-                                            <i class="fa fa-heart" aria-hidden="true"></i>
-
-                                            <div class="timetable-item-like-count">9</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
                         </div>
-                    </div>
 
-                    <div class="tab-pane fade" id="shedule-Tue">
-                        <div class="row">
-
-                            <!-- Schedule Item 1 -->
-                            <div class="col-md-6">
-                                <div class="timetable-item">
-                                    <div class="timetable-item-img">
-                                        <img src="img/schedule-core.jpg" alt="Core Stability">
-                                    </div>
-                                    <div class="timetable-item-main">
-                                        <div class="timetable-item-time">TUE - 4:00pm - 5:00pm</div>
-                                        <a href="#"
-                                           class="timetable-item-name"
-                                           data-toggle="modal"
-                                           data-target="#classDetails"
-                                           data-title="Core Stability"
-                                           data-img="img/classes-core.jpg"
-                                        >Core Stability</a>
-                                        <a href="#" class="btn btn-full-width btn-default btn-book">Book</a>
-
-                                        <div class="timetable-item-like">
-                                            <i class="fa fa-heart-o" aria-hidden="true"></i>
-                                            <i class="fa fa-heart" aria-hidden="true"></i>
-
-                                            <div class="timetable-item-like-count">11</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Schedule Item 2 -->
-                            <div class="col-md-6">
-                                <div class="timetable-item">
-                                    <div class="timetable-item-img">
-                                        <img src="img/schedule-stretching.jpg" alt="Stretching">
-                                    </div>
-                                    <div class="timetable-item-main">
-                                        <div class="timetable-item-time">5:00pm - 6:00pm</div>
-                                        <a href="#"
-                                           class="timetable-item-name"
-                                           data-toggle="modal"
-                                           data-target="#classDetails"
-                                           data-title="Stretching"
-                                           data-img="img/classes-stretching.jpg"
-                                        >Stretching</a>
-                                        <a href="#" class="btn btn-full-width btn-default btn-book">Book</a>
-
-                                        <div class="timetable-item-like">
-                                            <i class="fa fa-heart-o" aria-hidden="true"></i>
-                                            <i class="fa fa-heart" aria-hidden="true"></i>
-
-                                            <div class="timetable-item-like-count">28</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Schedule Item 3 -->
-                            <div class="col-md-6">
-                                <div class="timetable-item">
-                                    <div class="timetable-item-img">
-                                        <img src="img/schedule-zumba.jpg" alt="Zumba">
-                                    </div>
-                                    <div class="timetable-item-main">
-                                        <div class="timetable-item-time">5:00pm - 6:00pm</div>
-                                        <a href="#"
-                                           class="timetable-item-name"
-                                           data-toggle="modal"
-                                           data-target="#classDetails"
-                                           data-title="Zumba"
-                                           data-img="img/schedule-zumba.jpg"
-                                        >Zumba</a>
-                                        <a href="#" class="btn btn-full-width btn-default btn-book">Book</a>
-
-                                        <div class="timetable-item-like">
-                                            <i class="fa fa-heart-o" aria-hidden="true"></i>
-                                            <i class="fa fa-heart" aria-hidden="true"></i>
-
-                                            <div class="timetable-item-like-count">28</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Schedule Item 4 -->
-                            <div class="col-md-6">
-                                <div class="timetable-item">
-                                    <div class="timetable-item-img">
-                                        <img src="img/schedule-yoga.jpg" alt="Yoga">
-                                    </div>
-                                    <div class="timetable-item-main">
-                                        <div class="timetable-item-time">7:00pm - 8:00pm</div>
-                                        <a href="#"
-                                           class="timetable-item-name"
-                                           data-toggle="modal"
-                                           data-target="#classDetails"
-                                           data-title="Yoga"
-                                           data-img="img/classes-yoga.jpg"
-                                        >Yoga</a>
-                                        <a href="#" class="btn btn-full-width btn-default btn-book">Book</a>
-
-                                        <div class="timetable-item-like">
-                                            <i class="fa fa-heart-o" aria-hidden="true"></i>
-                                            <i class="fa fa-heart" aria-hidden="true"></i>
-
-                                            <div class="timetable-item-like-count">23</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Schedule Item 5 -->
-                            <div class="col-md-6">
-                                <div class="timetable-item">
-                                    <div class="timetable-item-img">
-                                        <img src="img/schedule-stretching.jpg" alt="Stretching">
-                                    </div>
-                                    <div class="timetable-item-main">
-                                        <div class="timetable-item-time">6:00pm - 7:00pm</div>
-                                        <a href="#"
-                                           class="timetable-item-name"
-                                           data-toggle="modal"
-                                           data-target="#classDetails"
-                                           data-title="Stretching"
-                                           data-img="img/classes-stretching.jpg"
-                                        >Stretching</a>
-                                        <a href="#" class="btn btn-full-width btn-default btn-book">Book</a>
-
-                                        <div class="timetable-item-like">
-                                            <i class="fa fa-heart-o" aria-hidden="true"></i>
-                                            <i class="fa fa-heart" aria-hidden="true"></i>
-
-                                            <div class="timetable-item-like-count">14</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Schedule Item 6 -->
-                            <div class="col-md-6">
-                                <div class="timetable-item">
-                                    <div class="timetable-item-img">
-                                        <img src="img/schedule-zumba.jpg" alt="Zumba">
-                                    </div>
-                                    <div class="timetable-item-main">
-                                        <div class="timetable-item-time">8:00pm - 9:00pm</div>
-                                        <a href="#"
-                                           class="timetable-item-name"
-                                           data-toggle="modal"
-                                           data-target="#classDetails"
-                                           data-title="Zumba"
-                                           data-img="img/schedule-zumba.jpg"
-                                        >Zumba</a>
-                                        <a href="#" class="btn btn-full-width btn-default btn-book">Book</a>
-
-                                        <div class="timetable-item-like">
-                                            <i class="fa fa-heart-o" aria-hidden="true"></i>
-                                            <i class="fa fa-heart" aria-hidden="true"></i>
-
-                                            <div class="timetable-item-like-count">9</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                    {% endfor %}
 
 
-                        </div>
-                    </div>
-
-                    <div class="tab-pane fade" id="shedule-Wed">
-                        <div class="row">
-
-                            <!-- Schedule Item 1 -->
-                            <div class="col-md-6">
-                                <div class="timetable-item">
-                                    <div class="timetable-item-img">
-                                        <img src="img/schedule-core.jpg" alt="Core Stability">
-                                    </div>
-                                    <div class="timetable-item-main">
-                                        <div class="timetable-item-time">WED - 4:00pm - 5:00pm</div>
-                                        <a href="#"
-                                           class="timetable-item-name"
-                                           data-toggle="modal"
-                                           data-target="#classDetails"
-                                           data-title="Core Stability"
-                                           data-img="img/classes-core.jpg"
-                                        >Core Stability</a>
-                                        <a href="#" class="btn btn-full-width btn-default btn-book">Book</a>
-
-                                        <div class="timetable-item-like">
-                                            <i class="fa fa-heart-o" aria-hidden="true"></i>
-                                            <i class="fa fa-heart" aria-hidden="true"></i>
-
-                                            <div class="timetable-item-like-count">11</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Schedule Item 2 -->
-                            <div class="col-md-6">
-                                <div class="timetable-item">
-                                    <div class="timetable-item-img">
-                                        <img src="img/schedule-stretching.jpg" alt="Stretching">
-                                    </div>
-                                    <div class="timetable-item-main">
-                                        <div class="timetable-item-time">5:00pm - 6:00pm</div>
-                                        <a href="#"
-                                           class="timetable-item-name"
-                                           data-toggle="modal"
-                                           data-target="#classDetails"
-                                           data-title="Stretching"
-                                           data-img="img/classes-stretching.jpg"
-                                        >Stretching</a>
-                                        <a href="#" class="btn btn-full-width btn-default btn-book">Book</a>
-
-                                        <div class="timetable-item-like">
-                                            <i class="fa fa-heart-o" aria-hidden="true"></i>
-                                            <i class="fa fa-heart" aria-hidden="true"></i>
-
-                                            <div class="timetable-item-like-count">28</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Schedule Item 3 -->
-                            <div class="col-md-6">
-                                <div class="timetable-item">
-                                    <div class="timetable-item-img">
-                                        <img src="img/schedule-zumba.jpg" alt="Zumba">
-                                    </div>
-                                    <div class="timetable-item-main">
-                                        <div class="timetable-item-time">5:00pm - 6:00pm</div>
-                                        <a href="#"
-                                           class="timetable-item-name"
-                                           data-toggle="modal"
-                                           data-target="#classDetails"
-                                           data-title="Zumba"
-                                           data-img="img/schedule-zumba.jpg"
-                                        >Zumba</a>
-                                        <a href="#" class="btn btn-full-width btn-default btn-book">Book</a>
-
-                                        <div class="timetable-item-like">
-                                            <i class="fa fa-heart-o" aria-hidden="true"></i>
-                                            <i class="fa fa-heart" aria-hidden="true"></i>
-
-                                            <div class="timetable-item-like-count">28</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Schedule Item 4 -->
-                            <div class="col-md-6">
-                                <div class="timetable-item">
-                                    <div class="timetable-item-img">
-                                        <img src="img/schedule-yoga.jpg" alt="Yoga">
-                                    </div>
-                                    <div class="timetable-item-main">
-                                        <div class="timetable-item-time">7:00pm - 8:00pm</div>
-                                        <a href="#"
-                                           class="timetable-item-name"
-                                           data-toggle="modal"
-                                           data-target="#classDetails"
-                                           data-title="Yoga"
-                                           data-img="img/classes-yoga.jpg"
-                                        >Yoga</a>
-                                        <a href="#" class="btn btn-full-width btn-default btn-book">Book</a>
-
-                                        <div class="timetable-item-like">
-                                            <i class="fa fa-heart-o" aria-hidden="true"></i>
-                                            <i class="fa fa-heart" aria-hidden="true"></i>
-
-                                            <div class="timetable-item-like-count">23</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Schedule Item 5 -->
-                            <div class="col-md-6">
-                                <div class="timetable-item">
-                                    <div class="timetable-item-img">
-                                        <img src="img/schedule-stretching.jpg" alt="Stretching">
-                                    </div>
-                                    <div class="timetable-item-main">
-                                        <div class="timetable-item-time">6:00pm - 7:00pm</div>
-                                        <a href="#"
-                                           class="timetable-item-name"
-                                           data-toggle="modal"
-                                           data-target="#classDetails"
-                                           data-title="Stretching"
-                                           data-img="img/classes-stretching.jpg"
-                                        >Stretching</a>
-                                        <a href="#" class="btn btn-full-width btn-default btn-book">Book</a>
-
-                                        <div class="timetable-item-like">
-                                            <i class="fa fa-heart-o" aria-hidden="true"></i>
-                                            <i class="fa fa-heart" aria-hidden="true"></i>
-
-                                            <div class="timetable-item-like-count">14</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Schedule Item 6 -->
-                            <div class="col-md-6">
-                                <div class="timetable-item">
-                                    <div class="timetable-item-img">
-                                        <img src="img/schedule-zumba.jpg" alt="Zumba">
-                                    </div>
-                                    <div class="timetable-item-main">
-                                        <div class="timetable-item-time">8:00pm - 9:00pm</div>
-                                        <a href="#"
-                                           class="timetable-item-name"
-                                           data-toggle="modal"
-                                           data-target="#classDetails"
-                                           data-title="Zumba"
-                                           data-img="img/schedule-zumba.jpg"
-                                        >Zumba</a>
-                                        <a href="#" class="btn btn-full-width btn-default btn-book">Book</a>
-
-                                        <div class="timetable-item-like">
-                                            <i class="fa fa-heart-o" aria-hidden="true"></i>
-                                            <i class="fa fa-heart" aria-hidden="true"></i>
-
-                                            <div class="timetable-item-like-count">9</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

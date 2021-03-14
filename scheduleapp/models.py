@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Trainer(models.Model):
     class Meta:
         verbose_name = 'Тренер'
@@ -23,6 +24,7 @@ class WorkoutType(models.Model):
     title = models.CharField(verbose_name='Название', max_length=100)
     photo = models.ImageField(verbose_name='Изображение', upload_to='workout_photos/')
     description = models.TextField(verbose_name='Описание')
+
     # equipment = models.TextField(verbose_name='Краткое описание')
 
     def __str__(self):
@@ -38,6 +40,13 @@ class Workout(models.Model):
                              verbose_name='Вид тренировки', blank=False)
     trainer = models.ForeignKey(Trainer, on_delete=models.CASCADE, related_name='workout', verbose_name='Тренер',
                                 blank=False)
+
+    INTENSITY_CHOICE = (
+        ('1', 'Слабая'),
+        ('2', 'Средняя'),
+        ('3', 'Высокая')
+    )
+    intensity = models.CharField(max_length=1, choices=INTENSITY_CHOICE, default='1', verbose_name='Интенсивность')
     date = models.DateField(verbose_name='Дата')
     start_workout = models.TimeField(verbose_name='Начало тренировки')
     workout_time = models.PositiveSmallIntegerField(verbose_name='Продолжительность (минут)')
