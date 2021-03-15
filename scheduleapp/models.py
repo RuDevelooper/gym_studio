@@ -8,7 +8,10 @@ class Trainer(models.Model):
 
     name = models.CharField(max_length=100, verbose_name='Фамилия Имя')
     photo = models.ImageField(verbose_name='Изображение', upload_to='trainer_photos/', default='static/img/team-01.jpg')
+    position = models.CharField(verbose_name='Должность', max_length=100)
     description = models.TextField(verbose_name='Описание тренера', null=True, blank=True)
+    instagram = models.CharField(max_length=200, verbose_name='Ссылка на Instagramm', null=True, blank=True)
+    telegram = models.CharField(max_length=200, verbose_name='Профиль в Telegram', null=True, blank=True)
 
     def __str__(self):
         return f'{self.name}'

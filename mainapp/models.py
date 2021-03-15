@@ -76,3 +76,19 @@ class MembershipGroupOptions(models.Model):
 
     def __str__(self):
         return f'{self.title}'
+
+class Testimonial(models.Model):
+    class Meta:
+        verbose_name = 'Отзыв'
+        verbose_name_plural = 'Отзывы'
+
+    author = models.CharField(verbose_name='Автор отзыва', max_length=100)
+    photo = models.ImageField(verbose_name='Фото автора', upload_to='testimonial_authors/', default='testimonial_authors/nophoto.png')
+    since = models.CharField(verbose_name='Тренеруется с ... года', max_length=4)
+    text = models.TextField(verbose_name='Текст отзыва', max_length=300)
+
+
+
+
+
+

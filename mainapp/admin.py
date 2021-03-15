@@ -56,3 +56,10 @@ class PromotionPriceAdmin(admin.ModelAdmin):
     list_editable = (
         'discount',
     )
+
+
+@admin.register(Testimonial)
+class TestimonialAdmin(admin.ModelAdmin):
+    list_display = (
+        'author',
+    )

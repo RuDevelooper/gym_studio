@@ -45,12 +45,12 @@
                     <h6>Ссылки</h6>
                     <ul class="footer-links">
                         <li><a href="{% url 'index' %}">Главная</a></li>
-                        <li><a href="facilities.html">Facilities</a></li>
-                        <li><a href="team.html">The Team</a></li>
+                        <li><a href="{% url 'facilities' %}">Оборудование</a></li>
+                        <li><a href="{% url 'team' %}">Тренеры</a></li>
                         <li><a href="{% url 'membership' %}">Абонементы</a></li>
                         <li><a href="{% url 'schedule' %}">Расписание</a></li>
-                        <li><a href="gift-cards.html">Gift Cards</a></li>
-                        <li><a href="articles.html">Articles</a></li>
+{#                        <li><a href="gift-cards.html">Gift Cards</a></li>#}
+{#                        <li><a href="articles.html">Articles</a></li>#}
                     </ul>
                 </div>
 
@@ -102,6 +102,6 @@
         </div>
     </div>
     <div class="footer-copy">
-        <i class="fa fa-copyright"></i> Copyright - Gym City Ltd.
+        <i class="fa fa-copyright"></i> GymStudio все права защищены.
     </div>
 </footer>

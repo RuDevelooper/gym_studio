@@ -22,41 +22,48 @@
                data-target="#gymCityNav"></i>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item {% if request.resolver_match.url_name == 'index' %}active{% endif %}">
-                    <a href="{% url 'index' %}" class="nav-link {% if request.resolver_match.url_name == 'index' %}active{% endif %}">Главная</a>
+                    <a href="{% url 'index' %}"
+                       class="nav-link {% if request.resolver_match.url_name == 'index' %}active{% endif %}">Главная</a>
                     <!-- to highlight a selected nav item add "active" class -->
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle"
+                    <a class="nav-link dropdown-toggle {% if request.resolver_match.url_name == 'facilities' or request.resolver_match.url_name == 'team' %} active {% endif %}"
                        href="#"
                        id="navAbout"
                        data-toggle="dropdown"
                        aria-haspopup="true"
                        aria-expanded="false"
-                    >About</a>
+                    >О нас</a>
 
                     <div class="dropdown-menu" aria-labelledby="navAbout">
-                        <a class="dropdown-item" href="facilities.html">Facilities</a>
-                        <a class="dropdown-item" href="team.html">The Team</a>
+                        <a class="dropdown-item" href="{% url 'facilities' %}">Оборудование</a>
+                        <a class="dropdown-item" href="{% url 'team' %}">Тренеры</a>
                     </div>
                 </li>
-                <li class="nav-item"><a href="{% url 'membership' %}" class="nav-link {% if request.resolver_match.url_name == 'membership' %} active {% endif %}">Абонементы</a></li>
-                <li class="nav-item"><a href="{% url 'schedule' %}" class="nav-link {% if request.resolver_match.url_name == 'schedule' %} active {% endif %}">Расписание</a></li>
-                <li class="nav-item"><a href="gift-cards.html" class="nav-link {% if request.resolver_match.url_name == 'indexs' %} active {% endif %}">Gift Cards</a></li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle"
-                       href="#"
-                       id="navArticles"
-                       data-toggle="dropdown"
-                       aria-haspopup="true"
-                       aria-expanded="false"
-                    >Articles</a>
-
-                    <div class="dropdown-menu" aria-labelledby="navArticles">
-                        <a class="dropdown-item" href="articles.html">Articles</a>
-                        <a class="dropdown-item" href="article.html">Single Article</a>
-                    </div>
+                <li class="nav-item"><a href="{% url 'membership' %}"
+                                        class="nav-link {% if request.resolver_match.url_name == 'membership' %} active {% endif %}">Абонементы</a>
                 </li>
-                <li class="nav-item"><a href="contacts.html" class="nav-link">Contacts</a></li>
+                <li class="nav-item"><a href="{% url 'schedule' %}"
+                                        class="nav-link {% if request.resolver_match.url_name == 'schedule' %} active {% endif %}">Расписание</a>
+                </li>
+{#                <li class="nav-item"><a href="gift-cards.html"#}
+{#                                        class="nav-link {% if request.resolver_match.url_name == 'indexs' %} active {% endif %}">Gift#}
+{#                    Cards</a></li>#}
+{#                <li class="nav-item dropdown">#}
+{#                    <a class="nav-link dropdown-toggle"#}
+{#                       href="#"#}
+{#                       id="navArticles"#}
+{#                       data-toggle="dropdown"#}
+{#                       aria-haspopup="true"#}
+{#                       aria-expanded="false"#}
+{#                    >Articles</a>#}
+{##}
+{#                    <div class="dropdown-menu" aria-labelledby="navArticles">#}
+{#                        <a class="dropdown-item" href="articles.html">Articles</a>#}
+{#                        <a class="dropdown-item" href="article.html">Single Article</a>#}
+{#                    </div>#}
+{#                </li>#}
+                <li class="nav-item"><a href="{% url 'contacts' %}" class="nav-link">Контакты</a></li>
             </ul>
         </div>
     </div>

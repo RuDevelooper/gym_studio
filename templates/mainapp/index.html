@@ -15,12 +15,14 @@
     <section class="content-block about-main">
         <div class="container">
             <div class="home-about-text">
-                <h2>Top quality workout at a great price</h2>
+                <h2>Отличный спорт-клуб</h2>
 
-                <p class="top-text">Lorem ipsum dolor sit amet, cu nec fugit ignota forensibus, assum quidam vivendo ius
-                    ea.
-                    Eu eius interesset vix, enim invenire an vim, sea eu quis idque facilis. Eum ex iriure bonorum
-                    vituperata, sea eruditi patrioque ut, quaerendum sadipscing ex pri.
+                <p class="top-text">GYM STUDIO&nbsp;&mdash; это семейная фитнес студия в&nbsp;которой могут заниматься
+                    все члены семьи от&nbsp;самых юных до&nbsp;людей с&nbsp;большим жизненным опытом. Уровень подготовки
+                    не&nbsp;имеет значения. У&nbsp;нас любой спортсмен найдет занятие по&nbsp;себе. Будь ты&nbsp;будущий
+                    атлет, который пока не&nbsp;научился подтягиваться или монстр, который жмет от&nbsp;груди 200&nbsp;&mdash;
+                    мы&nbsp;тебе рады и&nbsp;сможем помочь в&nbsp;достижении твоих целей.</br>Приходи на&nbsp;гостевую
+                    тренировку и&nbsp;оставайся тут жить!
                 </p>
             </div>
 
@@ -30,7 +32,7 @@
                     <!-- Equipment & Facilities Link -->
                     <a class="about-item blink-on-hover" href="facilities.html" data-aos="fade-up">
                         <img src="{% static 'img/about-facilities.jpg' %}" alt="">
-                        <span>Оборудование и сервис</span>
+                        <span>Расписание</span>
                     </a>
 
                 </div>
@@ -39,16 +41,17 @@
                     <!-- Personal Trainers Link -->
                     <a class="about-item blink-on-hover" href="team.html" data-aos="fade-up" data-aos-delay="200">
                         <img src="{% static 'img/about-team.jpg' %}" alt="">
-                        <span>Персональные тренировки</span>
+                        <span>Абонементы</span>
                     </a>
 
                 </div>
                 <div class="col-md-4">
 
                     <!-- Membership Options Link -->
-                    <a class="about-item blink-on-hover" href="{% url 'membership' %}" data-aos="fade-up" data-aos-delay="400">
+                    <a class="about-item blink-on-hover" href="{% url 'membership' %}" data-aos="fade-up"
+                       data-aos-delay="400">
                         <img src="{% static 'img/about-membership.jpg' %}" alt="">
-                        <span>Абонементы</span>
+                        <span>Групповые тренировки</span>
                     </a>
 
                 </div>
@@ -57,7 +60,7 @@
     </section>
 
     <div class="container d-md-none">
-        <h2>Meet our happy customers</h2>
+        <h2>Довольные клиенты</h2>
     </div>
 
     <section class="testimonials">
@@ -65,75 +68,37 @@
             <div id="testimonials" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
 
-                    <!-- Review 1 -->
-                    <div class="carousel-item active">
-                        <div class="client-review">
-                            <div class="client-img">
-                                <img src="img/testimonials-face-01.jpg" alt="Ann Doe">
-                            </div>
-                            <div class="client-text">
-                                <p>
-                                    <i class="fa fa-quote-left" aria-hidden="true"></i>
-                                    GymCity is a fantastic and unique gym! The classes are so energetic, I feel totally
-                                    wiped out in a good way. You learn so much and everyone is really friendly!
-                                    <i class="fa fa-quote-right" aria-hidden="true"></i>
-                                </p>
-                                <div class="name">Anna Davis</div>
-                                <div class="status">Member since 2014</div>
-                            </div>
-                        </div>
-                    </div>
+                    <!-- Reviews -->
 
-                    <!-- Review 2 -->
-                    <div class="carousel-item">
-                        <div class="client-review">
-                            <div class="client-img">
-                                <img src="img/testimonials-face-02.jpg" alt="Lucy Wilson">
-                            </div>
-                            <div class="client-text">
-                                <p>
-                                    <i class="fa fa-quote-left" aria-hidden="true"></i>
-                                    GymCity is the best gym I've ever been to! I absolutely love the gym area and
-                                    the classes! Everyone is so welcoming and I've met so many new friends!
-                                    <i class="fa fa-quote-right" aria-hidden="true"></i>
-                                </p>
-                                <div class="name">Lucy Wilson</div>
-                                <div class="status">Member since 2015</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Review 3 -->
-                    <div class="carousel-item">
-                        <div class="client-review">
-                            <div class="client-img">
-                                <img src="img/testimonials-face-03.jpg" alt="John Smith">
-                            </div>
-                            <div class="client-text">
-                                <p>
-                                    <i class="fa fa-quote-left" aria-hidden="true"></i>
-                                    I'm really enjoying it! Thank you so much for bringing fitness back into my
-                                    life!<br>
-                                    That is fantastic! I love it!
-                                    <i class="fa fa-quote-right" aria-hidden="true"></i>
-                                </p>
-                                <div class="name">Samanta Miller</div>
-                                <div class="status">Member since 2013</div>
+                    {% for t in testimonials %}
+                        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                            <div class="client-review">
+                                <div class="client-img">
+                                    <img src="{{ t.photo.url }}" alt="{{ t.author }}">
+                                </div>
+                                <div class="client-text">
+                                    <p>
+                                        <i class="fa fa-quote-left" aria-hidden="true"></i>{{ t.text|safe }}<i
+                                            class="fa fa-quote-right" aria-hidden="true"></i>
+                                    </p>
+                                    <div class="name">{{ t.author }}</div>
+                                    <div class="status">Тренеруется с {{ t.since }} года</div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    {% endfor %}
                 </div>
 
                 <!-- Left Arrow -->
                 <a class="carousel-control-prev d-none d-md-flex" href="#testimonials" role="button" data-slide="prev">
                     <span class="fa fa-angle-left" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
+                    <span class="sr-only">Предыдущий</span>
                 </a>
 
                 <!-- Right Arrow -->
                 <a class="carousel-control-next d-none d-md-flex" href="#testimonials" role="button" data-slide="next">
                     <span class="fa fa-angle-right" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
+                    <span class="sr-only">Следующий</span>
                 </a>
             </div>
         </div>
@@ -141,43 +106,38 @@
 
     <section class="content-block info-main">
         <div class="container">
-            <h2>What makes our gyms great</h2>
+            <h2>Что делает нас хорошим спорт-клубом</h2>
 
-            <p class="top-text">In regione mediocrem neglegentur usu, no qui dicunt aliquam salutatus:</p>
+            <p class="top-text">Мы всегда старемся сделать пребывание спортсменов в клубе еще комфортнее:</p>
 
             <div class="row">
                 <div class="col-md-6">
                     <ul data-aos="fade-right">
-                        <li><strong>Low prices</strong> - lorem ipsum dolor sit amet, vix et aliquam conceptam
-                            theophrastus,
-                            ea sed
-                            viris postea volutpat
+                        <li><strong>Доступная цена</strong> - гибкий прайс позволит выбрать абонемент по&nbsp;себе,
+                            регулярно
+                            проходят акции, на&nbsp;которых можно получить очень хорошее предложение
                         </li>
-                        <li><strong>High quality equipment</strong> - id possim quodsi philosophia qui, ea soluta
-                            viderer
-                            qui, ignota
-                            aperiam definiebas per an
+                        <li><strong>Хорошее оборудование</strong> - тренажеры отвечают самым жестким требованиям к
+                            биомеханике и&nbsp;безопасности тренировочного процесса
                         </li>
-                        <li><strong>World class personal trainers</strong> - ex cibo diceret sententiae pri, mel an
-                            doctus
-                            percipit,
-                            ea veri petentium reprehendunt mea
+                        <li><strong>Тренеры с огромным опытом</strong> - команда специалистов по&nbsp;спортивному
+                            питанию,
+                            тренировочному процессу, восстановительным тренировкам помогут добиться результата
+                            максимально быстро
                         </li>
                     </ul>
                 </div>
                 <div class="col-md-6">
                     <ul data-aos="fade-left">
-                        <li><strong>No contract</strong> - in regione mediocrem neglegentur usu, no qui dicunt aliquam
-                            salutatus
+                        <li><strong>Никаких депозитов и вступительных взносов</strong> - платите только за&nbsp;то, что
+                            вам нужно. Нет скрытых комиссий, никаких дополнительных платежей
                         </li>
-                        <li><strong>Open 24/7</strong> - soleat commodo ius et, quo albucius elaboraret et, et labores
-                            commune
-                            repudiandae vim
+                        <li><strong>Работаем каждый день</strong> - наш клуб открыт для вас с&nbsp;7:00 до&nbsp;23:00 по&nbsp;будням
+                            и
+                            с&nbsp;9:00 до&nbsp;21:00 по&nbsp;выходным
                         </li>
-                        <li><strong>Over 50 free classes a week</strong> - aeque omnes evertitur cu eam, et ignota
-                            placerat
-                            intellegam
-                            eos, ne vel erant aliquando, et mea menandri partiendo
+                        <li><strong>Более 60 групповых занятий в неделю</strong> - групповые тренировки под руководством
+                            опытного тренера дают отличные результаты
                         </li>
                     </ul>
                 </div>
@@ -187,36 +147,36 @@
 
     <section>
         <div class="container">
-            <h2>Our FREE Classes you'll love</h2>
+            <h2>Фитнес</br>который ты&nbsp;полюбишь</h2>
         </div>
 
         <div class="owl-carousel owl-theme classes-carousel">
 
             <!-- Class 1 -->
             <div class="class-item blink-on-hover">
-                <img src="img/classes-yoga.jpg" alt="Yoga">
+                <img src="{% static 'img/classes-yoga.jpg' %}" alt="Yoga">
 
                 <div class="class-details">
-                    <h6>Yoga</h6>
+                    <h6>Йога</h6>
 
                     <div class="class-details-icons">
                         <a href="#"
                            data-toggle="modal"
                            data-target="#classDetails"
                            data-title="Yoga"
-                           data-img="img/classes-yoga.jpg"
+                           data-img="{% static 'img/classes-yoga.jpg' %}"
                         >
                             <i class="fa fa-info"
                                data-toggle="tooltip"
                                data-placement="bottom"
-                               title="Class Details"
+                               title="Описание"
                             ></i>
                         </a>
-                        <a href="schedule.html"
+                        <a href="{% url 'schedule' %}"
                            data-toggle="tooltip"
                            data-html="true"
                            data-placement="bottom"
-                           title="Schedule"
+                           title="Расписание"
                         ><i class="fa fa-list"></i></a>
                     </div>
                 </div>
@@ -224,29 +184,29 @@
 
             <!-- Class 2 -->
             <div class="class-item blink-on-hover">
-                <img src="img/classes-pilates.jpg" alt="Pilates">
+                <img src="{% static 'img/classes-pilates.jpg' %}" alt="Pilates">
 
                 <div class="class-details">
-                    <h6>Pilates</h6>
+                    <h6>Пилатес</h6>
 
                     <div class="class-details-icons">
                         <a href="#"
                            data-toggle="modal"
                            data-target="#classDetails"
                            data-title="Pilates"
-                           data-img="img/classes-pilates.jpg"
+                           data-img="{% static 'img/classes-pilates.jpg' %}"
                         >
                             <i class="fa fa-info"
                                data-toggle="tooltip"
                                data-placement="bottom"
-                               title="Class Details"
+                               title="Описание"
                             ></i>
                         </a>
-                        <a href="schedule.html"
+                        <a href="{% url 'schedule' %}"
                            data-toggle="tooltip"
                            data-html="true"
                            data-placement="bottom"
-                           title="Schedule"
+                           title="Расписание"
                         ><i class="fa fa-list"></i></a>
                     </div>
                 </div>
@@ -254,29 +214,29 @@
 
             <!-- Class 3 -->
             <div class="class-item blink-on-hover">
-                <img src="img/classes-stretching.jpg" alt="Stretching">
+                <img src="{% static 'img/classes-stretching.jpg' %}" alt="Stretching">
 
                 <div class="class-details">
-                    <h6>Stretching</h6>
+                    <h6>Стретчинг</h6>
 
                     <div class="class-details-icons">
                         <a href="#"
                            data-toggle="modal"
                            data-target="#classDetails"
                            data-title="Stretching"
-                           data-img="img/classes-stretching.jpg"
+                           data-img="{% static 'img/classes-stretching.jpg' %}"
                         >
                             <i class="fa fa-info"
                                data-toggle="tooltip"
                                data-placement="bottom"
-                               title="Class Details"
+                               title="Описание"
                             ></i>
                         </a>
-                        <a href="schedule.html"
+                        <a href="{% url 'schedule' %}"
                            data-toggle="tooltip"
                            data-html="true"
                            data-placement="bottom"
-                           title="Schedule"
+                           title="Расписание"
                         ><i class="fa fa-list"></i></a>
                     </div>
                 </div>
@@ -284,29 +244,29 @@
 
             <!-- Class 4 -->
             <div class="class-item blink-on-hover">
-                <img src="img/classes-core.jpg" alt="Core Stability">
+                <img src="{% static 'img/classes-core.jpg' %}" alt="Core Stability">
 
                 <div class="class-details">
-                    <h6>Core Stability</h6>
+                    <h6>Сайклинг</h6>
 
                     <div class="class-details-icons">
                         <a href="#"
                            data-toggle="modal"
                            data-target="#classDetails"
                            data-title="Core Stability"
-                           data-img="img/classes-core.jpg"
+                           data-img="{% static 'img/classes-core.jpg' %}"
                         >
                             <i class="fa fa-info"
                                data-toggle="tooltip"
                                data-placement="bottom"
-                               title="Class Details"
+                               title="Описание"
                             ></i>
                         </a>
-                        <a href="schedule.html"
+                        <a href="{% url 'schedule' %}"
                            data-toggle="tooltip"
                            data-html="true"
                            data-placement="bottom"
-                           title="Schedule"
+                           title="Расписание"
                         ><i class="fa fa-list"></i></a>
                     </div>
                 </div>
@@ -316,34 +276,22 @@
 
 
     <section class="content-block free-pass" data-scroll-index="0">
-        <div class="container">
-            <h2>Get a free 3 day pass</h2>
+        <div class="container col-md-5">
+            <h2>Получи скидку<br>на первое занятие</h2>
 
             <!-- Contact Form -->
-            <form class="free-pass-form" novalidate>
+            <form class="free-pass-form" validate>
                 <div class="row" data-aos="fade-up">
 
                     <!-- First Name Input -->
-                    <div class="col-md-6 form-group">
-                        <input type="text" placeholder="First Name *" class="form-control" required/>
+                    <div class="col-md-12 form-group">
+                        <input type="text" placeholder="Имя *" class="form-control" required/>
 
                         <div class="valid-feedback">
-                            Looks good!
+                            Вроде норм )
                         </div>
                         <div class="invalid-feedback">
-                            Please provide your first name
-                        </div>
-                    </div>
-
-                    <!-- Last Name Input -->
-                    <div class="col-md-6 form-group">
-                        <input type="text" placeholder="Last Name *" class="form-control" required/>
-
-                        <div class="valid-feedback">
-                            Looks good!
-                        </div>
-                        <div class="invalid-feedback">
-                            Please provide your last name
+                            Как к Вам можно обращаться?
                         </div>
                     </div>
                 </div>
@@ -351,33 +299,21 @@
 
                 <div class="row" data-aos="fade-up" data-aos-delay="200">
                     <!-- Phone Input -->
-                    <div class="col-md-6 form-group">
-                        <input type="text" placeholder="Phone Number *" class="form-control" required/>
+                    <div class="col-md-12 form-group">
+                        <input type="text" placeholder="Номер телефона *" class="form-control" required/>
 
                         <div class="valid-feedback">
-                            Looks good!
+                            Норм
                         </div>
                         <div class="invalid-feedback">
-                            Please provide your phone number
-                        </div>
-                    </div>
-
-                    <!-- Email Input -->
-                    <div class="col-md-6 form-group">
-                        <input type="email" placeholder="Email *" class="form-control" required/>
-
-                        <div class="valid-feedback">
-                            Looks good!
-                        </div>
-                        <div class="invalid-feedback">
-                            Please provide your email address
+                            Введите номер телефона и получите скидку :)
                         </div>
                     </div>
                 </div>
 
                 <!-- Submit Button -->
                 <button type="submit" class="btn btn-full-width btn-primary btn-contact" data-aos="fade-up"
-                        data-aos-delay="400">Get a FREE 3 Day Pass
+                        data-aos-delay="400">ПОЛУЧИТЬ СКИДКУ
                 </button>
             </form>
         </div>

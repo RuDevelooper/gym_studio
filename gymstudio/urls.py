@@ -28,6 +28,9 @@ urlpatterns = [
     re_path(r'^$', HomePage.as_view(), name='index'),
     re_path(r'^memberships/', Memberships.as_view(), name='membership'),
     re_path(r'^schedule/', Schedule.as_view(), name='schedule'),
+    re_path(r'^facilities/', Facilities.as_view(), name='facilities'),
+    re_path(r'^team/', Team.as_view(), name='team'),
+    re_path(r'^contacts/', Contacts.as_view(), name='contacts'),
 ]
 
 if settings.DEBUG:

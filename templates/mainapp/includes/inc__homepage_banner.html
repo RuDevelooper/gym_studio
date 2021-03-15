@@ -5,6 +5,9 @@
         <li data-target="#topBanner" data-slide-to="0" class="active"></li>
         <li data-target="#topBanner" data-slide-to="1"></li>
         <li data-target="#topBanner" data-slide-to="2"></li>
+        <li data-target="#topBanner" data-slide-to="3"></li>
+        <li data-target="#topBanner" data-slide-to="4"></li>
+        <li data-target="#topBanner" data-slide-to="5"></li>
     </ol>
 
     <div class="carousel-inner">
@@ -18,12 +21,12 @@
                     <div data-aos="fade-right" data-aos-delay="500" data-aos-duration="500">Подтянутое тело</div>
                     <div data-aos="fade-right" data-aos-delay="600" data-aos-duration="500">просится наружу</div>
                 </div>
-                <a href="#"
-                   class="btn btn-primary btn-large"
+                <a class="btn btn-primary btn-large"
                    data-aos="zoom-in-up"
                    data-aos-delay="700"
                    data-aos-duration="500"
                    data-scroll-goto="0"
+                   onclick="location.href={% url 'schedule' %};"
                 >Расписание</a>
             </div>
         </div>
@@ -33,10 +36,10 @@
             <img class="d-block w-100" src="{% static 'img/top-banner-02.jpg' %}" alt="Second slide">
             <div class="carousel-caption">
                 <div class="carousel-caption-text clearfix">
-                    <div>Получи результат</div>
-                    <div>за короткий срок</div>
+                    <div>Результат</div>
+                    <div>Быстро</div>
                 </div>
-                <a href="#"
+                <a onclick="location.href={% url 'membership' %}"
                    class="btn btn-primary btn-large"
                 >Абонементы</a>
             </div>
@@ -65,10 +68,40 @@
                     <div>А у нас есть</div>
                     <div>ХАМАМ</div>
                 </div>
-                <a href="#"
+                <a onclick="location.href={% url 'facilities' %}"
                    class="btn btn-primary btn-large"
                    data-scroll-goto="0"
                 >Что ещё есть?</a>
+            </div>
+        </div>
+
+        <!-- Banner 5 -->
+        <div class="carousel-item">
+            <img class="d-block w-100" src="{% static 'img/top-banner-03.jpg' %}" alt="Third slide">
+            <div class="carousel-caption">
+                <div class="carousel-caption-text clearfix">
+                    <div>Нечего делать?</div>
+                    <div>Делай тело</div>
+                </div>
+                <a onclick="location.href={% url 'membership' %}"
+                   class="btn btn-primary btn-large"
+                   data-scroll-goto="0"
+                >Абонементы</a>
+            </div>
+        </div>
+
+        <!-- Banner 6 -->
+        <div class="carousel-item">
+            <img class="d-block w-100" src="{% static 'img/top-banner-03.jpg' %}" alt="Third slide">
+            <div class="carousel-caption">
+                <div class="carousel-caption-text clearfix">
+                    <div>Лучше тебя сегодня</div>
+                    <div>Только ТЫ завтра</div>
+                </div>
+                <a onclick="location.href={% url 'team' %}"
+                   class="btn btn-primary btn-large"
+                   data-scroll-goto="0"
+                >Тренеры</a>
             </div>
         </div>
     </div>

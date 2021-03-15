@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from mainapp.models import Membership, PromotionPrice
+from mainapp.models import Membership, PromotionPrice, Testimonial
+from scheduleapp.models import Trainer
 
 # Create your views here.
 from django.views.generic import TemplateView
@@ -9,7 +10,12 @@ class HomePage(TemplateView):
     template_name = 'mainapp/index.html'
 
     def get_context_data(self, **kwargs):
-        return
+        context = super().get_context_data(**kwargs)
+
+        t = Testimonial.objects.all()
+        context['testimonials'] = t
+
+        return context
 
 
 class Memberships(TemplateView):
@@ -52,3 +58,33 @@ class Memberships(TemplateView):
 
         return context
 
+
+class Facilities(TemplateView):
+    template_name = 'mainapp/facilities.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        t = Testimonial.objects.all()
+        context['testimonials'] = t
+
+        return context
+
+
+class Team(TemplateView):
+    template_name = 'mainapp/team.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        t = Trainer.objects.all()
+        context['trainers'] = t
+
+        return context
+
+class Contacts(TemplateView):
+    template_name = 'mainapp/contacts.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        return context
