@@ -1,3 +1,5 @@
 /venv/
 /mainapp/migrations/
 /scheduleapp/migrations/
+/bin/
+/gymstudio/settings.py
