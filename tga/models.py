@@ -9,6 +9,7 @@ class Profile(models.Model):
     name = models.TextField(
         verbose_name='Имя пользователя',
     )
+    is_stuff = models.BooleanField(verbose_name='Сотрудник', default=False)
 
     def __str__(self):
         return f'#{self.external_id} {self.name}'
