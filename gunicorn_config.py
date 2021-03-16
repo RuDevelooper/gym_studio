@@ -1,0 +1,9 @@
+command = '/home/master/code/gymstudio/venv/bin/gunicorn'
+pythonpath = '/home/master/code/gymstudio'
+virtualenv = '/home/master/code/gymstudio/venv'
+bind = '127.0.0.1:8005'
+workers = 5
+user = 'master'
+limit_request_fields = 32000
+limit_request_field_size = 0
+raw_env = 'DJANGO_SETTINGS_MODULE=gymstudio.settings'
