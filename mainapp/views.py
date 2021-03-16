@@ -26,7 +26,7 @@ class HomePage(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        send_message(chat_id=542277086)
+        # send_message(chat_id=542277086)
 
         t = Testimonial.objects.all()
         context['testimonials'] = t
