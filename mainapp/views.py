@@ -1,4 +1,7 @@
+from django.conf import settings
 from django.shortcuts import render
+from telegram import ParseMode
+
 from mainapp.models import Membership, PromotionPrice, Testimonial
 from scheduleapp.models import Trainer, WorkoutType, Workout
 import datetime
@@ -9,6 +12,16 @@ from tga.models import *
 from .forms import GetDiscountForm
 from tga.management.commands.bot import *
 
+request = Request(
+    connect_timeout=0.5,
+    read_timeout=1.0,
+)
+bot = Bot(
+    request=request,
+    token=settings.TOKEN,
+    base_url=getattr(settings, 'PROXY_URL', None),
+)
+
 
 class HomePage(TemplateView):
     template_name = 'mainapp/index.html'
@@ -16,15 +29,17 @@ class HomePage(TemplateView):
     def post(self, request, *args, **kwargs):
         context = self.get_context_data()
         if context["form"].is_valid():
-            send_message(chat_id=542277086)
-
-
-
+            phone = context["form"]['phone'].value()
+            bot.send_message(chat_id=542277086, text=f'<strong>ПЕРЕЗВОНИ</strong>\n {phone}', parse_mode=ParseMode.HTML)
+            bot.send_message(chat_id=735314493, text=f'<strong>ПЕРЕЗВОНИ</strong>\n {phone}',
+                             parse_mode=ParseMode.HTML)
 
         return super(TemplateView, self).render_to_response(context)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+
+        # bot.send_message(chat_id=542277086, text='TEST')
 
         # send_message(chat_id=542277086)
 

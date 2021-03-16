@@ -175,7 +175,7 @@
                                 ></i>
                             </a>
                             <a href={% url 'schedule' %}
-                               data-toggle="tooltip"
+                                       data-toggle="tooltip"
                                data-html="true"
                                data-placement="bottom"
                                title="Расписание"
@@ -193,42 +193,56 @@
             <h2>Получи скидку<br>на первое занятие</h2>
 
             <!-- Contact Form -->
-            <form class="free-pass-form" validate>
-                <div class="row" data-aos="fade-up">
 
-                    <!-- First Name Input -->
-                    <div class="col-md-12 form-group">
-                        <input type="text" placeholder="Имя *" class="form-control" required/>
-
-                        <div class="valid-feedback">
-                            Вроде норм )
-                        </div>
-                        <div class="invalid-feedback">
-                            Как к Вам можно обращаться?
-                        </div>
-                    </div>
-                </div>
+            <form class="free-pass-form" validate action="#" method="post">
 
 
-                <div class="row" data-aos="fade-up" data-aos-delay="200">
-                    <!-- Phone Input -->
-                    <div class="col-md-12 form-group">
-                        <input type="text" placeholder="Номер телефона *" class="form-control" required/>
+                    {% csrf_token %}
+                    {{ form }}
 
-                        <div class="valid-feedback">
-                            Норм
-                        </div>
-                        <div class="invalid-feedback">
-                            Введите номер телефона и получите скидку :)
-                        </div>
-                    </div>
-                </div>
+
 
                 <!-- Submit Button -->
-                <button type="submit" class="btn btn-full-width btn-primary btn-contact" data-aos="fade-up"
-                        data-aos-delay="400">ПОЛУЧИТЬ СКИДКУ
+                <button type="submit" class="btn btn-full-width btn-primary btn-contact">ПОЛУЧИТЬ СКИДКУ
                 </button>
             </form>
+
+{#            <form class="free-pass-form" validate>#}
+{#                <div class="row" data-aos="fade-up">#}
+{##}
+{#                    <!-- First Name Input -->#}
+{#                    <div class="col-md-12 form-group">#}
+{#                        <input type="text" placeholder="Имя *" class="form-control" required/>#}
+{##}
+{#                        <div class="valid-feedback">#}
+{#                            Вроде норм )#}
+{#                        </div>#}
+{#                        <div class="invalid-feedback">#}
+{#                            Как к Вам можно обращаться?#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{##}
+{##}
+{#                <div class="row" data-aos="fade-up" data-aos-delay="200">#}
+{#                    <!-- Phone Input -->#}
+{#                    <div class="col-md-12 form-group">#}
+{#                        <input type="text" placeholder="Номер телефона *" class="form-control" required/>#}
+{##}
+{#                        <div class="valid-feedback">#}
+{#                            Норм#}
+{#                        </div>#}
+{#                        <div class="invalid-feedback">#}
+{#                            Введите номер телефона и получите скидку :)#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{##}
+{#                <!-- Submit Button -->#}
+{#                <button type="submit" class="btn btn-full-width btn-primary btn-contact" data-aos="fade-up"#}
+{#                        data-aos-delay="400">ПОЛУЧИТЬ СКИДКУ#}
+{#                </button>#}
+{#            </form>#}
         </div>
     </section>
 
