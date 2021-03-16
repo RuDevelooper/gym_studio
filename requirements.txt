@@ -27,3 +27,5 @@ traitlets==5.0.5
 virtualenv==16.7.6
 wcwidth==0.2.5
 wrapt==1.11.2
+
+telegram~=0.0.1
