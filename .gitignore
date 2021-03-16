@@ -3,3 +3,11 @@
 /scheduleapp/migrations/
 /bin/
 /gymstudio/settings.py
+/.idea/inspectionProfiles/profiles_settings.xml
+/.idea/.gitignore
+/.idea/gymstudio.iml
+/.idea/misc.xml
+/.idea/modules.xml
+/.idea/vcs.xml
+/.idea/workspace.xml
+/db.sqlite3
