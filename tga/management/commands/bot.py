@@ -97,3 +97,10 @@ class Command(BaseCommand):
         # 3 -- запустить бесконечную обработку входящих сообщений
         updater.start_polling()
         updater.idle()
+
+
+def send_message(update: Update, chat_id):
+    return update.message.reply_text(
+        text=f'Test',
+        chat_id=chat_id
+    )
