@@ -15,9 +15,9 @@
     <section class="content-block about-main">
         <div class="container">
             <div class="home-about-text">
-                <h2>Отличный спорт-клуб</h2>
+                <h2>Спортивный клуб</h2>
 
-                <p class="top-text">GYM STUDIO&nbsp;&mdash; это семейная фитнес студия в&nbsp;которой могут заниматься
+                <p class="top-text">GymStudio&nbsp;&mdash; это семейная фитнес студия в&nbsp;которой могут заниматься
                     все члены семьи от&nbsp;самых юных до&nbsp;людей с&nbsp;большим жизненным опытом. Уровень подготовки
                     не&nbsp;имеет значения. У&nbsp;нас любой спортсмен найдет занятие по&nbsp;себе. Будь ты&nbsp;будущий
                     атлет, который пока не&nbsp;научился подтягиваться или монстр, который жмет от&nbsp;груди 200&nbsp;&mdash;
@@ -30,7 +30,7 @@
                 <div class="col-md-4">
 
                     <!-- Equipment & Facilities Link -->
-                    <a class="about-item blink-on-hover" href="facilities.html" data-aos="fade-up">
+                    <a class="about-item blink-on-hover" href="{% url 'schedule' %}" data-aos="fade-up">
                         <img src="{% static 'img/about-facilities.jpg' %}" alt="">
                         <span>Расписание</span>
                     </a>
@@ -39,7 +39,8 @@
                 <div class="col-md-4">
 
                     <!-- Personal Trainers Link -->
-                    <a class="about-item blink-on-hover" href="team.html" data-aos="fade-up" data-aos-delay="200">
+                    <a class="about-item blink-on-hover" href="{% url 'membership' %}" data-aos="fade-up"
+                       data-aos-delay="200">
                         <img src="{% static 'img/about-team.jpg' %}" alt="">
                         <span>Абонементы</span>
                     </a>
@@ -48,10 +49,10 @@
                 <div class="col-md-4">
 
                     <!-- Membership Options Link -->
-                    <a class="about-item blink-on-hover" href="{% url 'membership' %}" data-aos="fade-up"
+                    <a class="about-item blink-on-hover" href="{% url 'team' %}" data-aos="fade-up"
                        data-aos-delay="400">
                         <img src="{% static 'img/about-membership.jpg' %}" alt="">
-                        <span>Групповые тренировки</span>
+                        <span>Тренеры</span>
                     </a>
 
                 </div>
@@ -152,125 +153,37 @@
 
         <div class="owl-carousel owl-theme classes-carousel">
 
-            <!-- Class 1 -->
-            <div class="class-item blink-on-hover">
-                <img src="{% static 'img/classes-yoga.jpg' %}" alt="Yoga">
+            <!-- Classes -->
+            {% for f in fitness %}
+                <div class="class-item blink-on-hover">
+                    <img src={{ f.photo.url }} alt="{{ f.title }}">
 
-                <div class="class-details">
-                    <h6>Йога</h6>
+                    <div class="class-details">
+                        <h6>{{ f.title }}</h6>
 
-                    <div class="class-details-icons">
-                        <a href="#"
-                           data-toggle="modal"
-                           data-target="#classDetails"
-                           data-title="Yoga"
-                           data-img="{% static 'img/classes-yoga.jpg' %}"
-                        >
-                            <i class="fa fa-info"
+                        <div class="class-details-icons">
+                            <a href="#"
+                               data-toggle="modal"
+                               data-target="#classDetails-{{ f.id }}"
+                               data-title="Yoga"
+                               data-img={{ f.photo.url }}
+                            >
+                                <i class="fa fa-info"
+                                   data-toggle="tooltip"
+                                   data-placement="bottom"
+                                   title="Описание"
+                                ></i>
+                            </a>
+                            <a href={% url 'schedule' %}
                                data-toggle="tooltip"
+                               data-html="true"
                                data-placement="bottom"
-                               title="Описание"
-                            ></i>
-                        </a>
-                        <a href="{% url 'schedule' %}"
-                           data-toggle="tooltip"
-                           data-html="true"
-                           data-placement="bottom"
-                           title="Расписание"
-                        ><i class="fa fa-list"></i></a>
+                               title="Расписание"
+                            ><i class="fa fa-list"></i></a>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Class 2 -->
-            <div class="class-item blink-on-hover">
-                <img src="{% static 'img/classes-pilates.jpg' %}" alt="Pilates">
-
-                <div class="class-details">
-                    <h6>Пилатес</h6>
-
-                    <div class="class-details-icons">
-                        <a href="#"
-                           data-toggle="modal"
-                           data-target="#classDetails"
-                           data-title="Pilates"
-                           data-img="{% static 'img/classes-pilates.jpg' %}"
-                        >
-                            <i class="fa fa-info"
-                               data-toggle="tooltip"
-                               data-placement="bottom"
-                               title="Описание"
-                            ></i>
-                        </a>
-                        <a href="{% url 'schedule' %}"
-                           data-toggle="tooltip"
-                           data-html="true"
-                           data-placement="bottom"
-                           title="Расписание"
-                        ><i class="fa fa-list"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Class 3 -->
-            <div class="class-item blink-on-hover">
-                <img src="{% static 'img/classes-stretching.jpg' %}" alt="Stretching">
-
-                <div class="class-details">
-                    <h6>Стретчинг</h6>
-
-                    <div class="class-details-icons">
-                        <a href="#"
-                           data-toggle="modal"
-                           data-target="#classDetails"
-                           data-title="Stretching"
-                           data-img="{% static 'img/classes-stretching.jpg' %}"
-                        >
-                            <i class="fa fa-info"
-                               data-toggle="tooltip"
-                               data-placement="bottom"
-                               title="Описание"
-                            ></i>
-                        </a>
-                        <a href="{% url 'schedule' %}"
-                           data-toggle="tooltip"
-                           data-html="true"
-                           data-placement="bottom"
-                           title="Расписание"
-                        ><i class="fa fa-list"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Class 4 -->
-            <div class="class-item blink-on-hover">
-                <img src="{% static 'img/classes-core.jpg' %}" alt="Core Stability">
-
-                <div class="class-details">
-                    <h6>Сайклинг</h6>
-
-                    <div class="class-details-icons">
-                        <a href="#"
-                           data-toggle="modal"
-                           data-target="#classDetails"
-                           data-title="Core Stability"
-                           data-img="{% static 'img/classes-core.jpg' %}"
-                        >
-                            <i class="fa fa-info"
-                               data-toggle="tooltip"
-                               data-placement="bottom"
-                               title="Описание"
-                            ></i>
-                        </a>
-                        <a href="{% url 'schedule' %}"
-                           data-toggle="tooltip"
-                           data-html="true"
-                           data-placement="bottom"
-                           title="Расписание"
-                        ><i class="fa fa-list"></i></a>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </section>
 
@@ -320,5 +233,47 @@
     </section>
 
     <!-- Modals -->
-    {% include 'mainapp/includes/inc__modals.html' %}
+    {% for f in fitness %}
+        <div id="classDetails-{{ f.id }}" class="modal fade" role="dialog" aria-hidden="true">
+            <div class="modal-dialog classes-details" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">{{ f.title }}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+
+                        <p class="description">{{ f.description }}</p>
+
+                        <div class="row">
+                            <div class="col-sm-5 order-sm-2 text-right">
+                                <img class="modal-img" src="{{ f.photo.url }}" alt="Class Details">
+                            </div>
+                            <div class="col-sm-7 order-sm-1">
+                                <h6>Одежда</h6>
+
+                                <p>Пожалуйста, одевайтесь комфортно. Убедитесь, что можете свободно
+                                    двигаться.</p>
+                                <h6>Расписание</h6>
+                                <ul class="timetable">
+                                    {% for workout in workouts %}
+                                        {% if workout.type|safe == f.title|safe %}
+                                            <li>{{ workout.date|date:"l" }}: {{ workout.date }}
+                                                в {{ workout.start_workout }}.
+                                                Длительность: {{ workout.workout_time }} мин.
+                                            </li>{% endif %}
+                                    {% endfor %}
+                                </ul>
+
+                                <p class="contact-us-text"><a href="{% url 'contacts' %}">Свяжитесь с нами</a> чтобы
+                                    узнать больше.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
 {% endblock %}

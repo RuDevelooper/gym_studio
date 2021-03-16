@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from mainapp.models import Membership, PromotionPrice, Testimonial
-from scheduleapp.models import Trainer
+from scheduleapp.models import Trainer, WorkoutType, Workout
+import datetime
 
 # Create your views here.
 from django.views.generic import TemplateView
@@ -14,6 +15,13 @@ class HomePage(TemplateView):
 
         t = Testimonial.objects.all()
         context['testimonials'] = t
+
+        f = WorkoutType.objects.all()
+        context['fitness'] = f
+
+        date = datetime.date.today()
+        w = Workout.objects.filter(date__gt=date).order_by('date')
+        context['workouts'] = w
 
         return context
 

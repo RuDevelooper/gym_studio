@@ -33,8 +33,10 @@ class Schedule(TemplateView):
                         'trainer': w.trainer,
                         'intensity': int(w.intensity),
                         'start_workout': w.start_workout,
+                        'end_workout': (datetime.datetime.combine(date.today(), w.start_workout) + datetime.timedelta(minutes=w.workout_time)).time(),
                         'workout_time': w.workout_time,
                         'date': w.date,
+                        'photo': w.type.photo.url,
                     }
                 )
 

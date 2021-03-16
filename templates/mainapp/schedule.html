@@ -42,10 +42,10 @@
                                     <div class="col-md-6">
                                         <div class="timetable-item">
                                             <div class="timetable-item-img">
-                                                <img src="img/schedule-core.jpg" alt="Core Stability">
+                                                <img src="{{ lesson.photo }}" alt="Core Stability">
                                             </div>
                                             <div class="timetable-item-main">
-                                                <div class="timetable-item-time">14:00 - 15:00</div>
+                                                <div class="timetable-item-time">{{ lesson.start_workout }} - {{ lesson.end_workout }}</div>
                                                 <a href="#"
                                                    class="timetable-item-name mb-sm-0"
                                                    data-toggle="modal"

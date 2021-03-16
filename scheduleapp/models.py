@@ -25,7 +25,7 @@ class WorkoutType(models.Model):
         verbose_name_plural = 'Виды занятий'
 
     title = models.CharField(verbose_name='Название', max_length=100)
-    photo = models.ImageField(verbose_name='Изображение', upload_to='workout_photos/')
+    photo = models.ImageField(verbose_name='Изображение', upload_to='workout_photos/', default='workout_photos/default.png')
     description = models.TextField(verbose_name='Описание')
 
     # equipment = models.TextField(verbose_name='Краткое описание')
