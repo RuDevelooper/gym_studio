@@ -30,9 +30,10 @@ class HomePage(TemplateView):
         context = self.get_context_data()
         if context["form"].is_valid():
             phone = context["form"]['phone'].value()
-            bot.send_message(chat_id=542277086, text=f'<strong>ПЕРЕЗВОНИ</strong>\n {phone}', parse_mode=ParseMode.HTML)
-            bot.send_message(chat_id=735314493, text=f'<strong>ПЕРЕЗВОНИ</strong>\n {phone}',
-                             parse_mode=ParseMode.HTML)
+            name = context["form"]['name'].value()
+            bot.send_message(chat_id=542277086, text=f'<strong>ПЕРЕЗВОНИ</strong>\n{phone}\n{name}', parse_mode=ParseMode.HTML)
+            # bot.send_message(chat_id=735314493, text=f'<strong>ПЕРЕЗВОНИ</strong>\n {phone}',
+            #                  parse_mode=ParseMode.HTML)
 
         return super(TemplateView, self).render_to_response(context)
 
